@@ -2,14 +2,21 @@
 dir = File.dirname(__FILE__)
 $LOAD_PATH.unshift dir unless $LOAD_PATH.include?(dir)
 
-module Reactor
-  autoload :Actions,         'reactor/actions'
-  autoload :ClassMethods,    'reactor/class_methods'
-  autoload :BaseHelpers,     'reactor/base_helpers'
-  autoload :PermittedParams, 'reactor/permitted_params'
+require 'inherited_resources'
+require 'has_scope'
+require 'kaminari'
+
+module Mongosteen
+  autoload :Actions,         'mongosteen/actions'
+  autoload :ClassMethods,    'mongosteen/class_methods'
+  autoload :BaseHelpers,     'mongosteen/base_helpers'
+  autoload :PermittedParams, 'mongosteen/permitted_params'
 
   class Engine < ::Rails::Engine
-    require 'reactor/engine'
+    require 'mongosteen/engine'
+    require 'mongoid/fake_criteria'
+    require 'mongoid/sorted_relations'
+    require 'mongoid/serializable_id'
   end
 end
 
@@ -23,10 +30,10 @@ class ActionController::Base
       respond_to :json
       class_attribute :as_json_config
 
-      extend  Reactor::ClassMethods
-      include Reactor::BaseHelpers
-      include Reactor::Actions
-      include Reactor::PermittedParams
+      extend  Mongosteen::ClassMethods
+      include Mongosteen::BaseHelpers
+      include Mongosteen::Actions
+      include Mongosteen::PermittedParams
 
       # configure permitted_params to accept all attributes
       instance_name = self.resources_configuration[:self][:instance_name]

@@ -1,4 +1,4 @@
-module Reactor
+module Mongosteen
   module ClassMethods
     def json_config(config_hash)
       self.as_json_config = config_hash

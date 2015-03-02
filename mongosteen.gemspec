@@ -1,10 +1,10 @@
 # coding: utf-8
 $:.push File.expand_path('../lib', __FILE__)
-require 'reactor/version'
+require 'mongosteen/version'
 
 Gem::Specification.new do |s|
-  s.name        = 'reactor'
-  s.version     = Reactor::VERSION
+  s.name        = 'mongosteen'
+  s.version     = Mongosteen::VERSION
   s.platform    = Gem::Platform::RUBY
   s.authors     = ['Alexander Kravets']
   s.email       = 'alex@slatestudio.com'
@@ -12,12 +12,12 @@ Gem::Specification.new do |s|
   s.homepage    = 'http://slatestudio.com'
   s.summary     = 'An easy way to add restful actions'
   s.description = <<-DESC
-Reactor is a library that helps to easily add restful actions to
+Mongosteen is a library that helps to easily add restful actions to
 mongoid models with support of search, pagination, scopes, history,
 json config.
   DESC
 
-  s.rubyforge_project = 'reactor'
+  s.rubyforge_project = 'mongosteen'
 
   s.files         = `git ls-files`.split("\n")
   s.require_paths = ['lib']

@@ -1,4 +1,4 @@
-module Reactor
+module Mongosteen
   module Actions
     # GET /resources
     def index(options={}, &block)

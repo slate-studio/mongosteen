@@ -1,4 +1,4 @@
-module Reactor
+module Mongosteen
   module PermittedParams
     # Permits all parameters that are sent, unless `project_params`
     # (or `smth_else_params`) defined, which is a default Rails

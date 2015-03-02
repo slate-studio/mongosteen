@@ -1,5 +1,5 @@
 module Mongoid
-  module Reactor
+  module SerializableId
     extend ActiveSupport::Concern
 
     def serializable_hash(options={})

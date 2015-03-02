@@ -5,7 +5,7 @@
 #  - kaminari
 #  - mongoid-history
 
-module Reactor
+module Mongosteen
   module BaseHelpers
     protected
       # add support for scopes, search and pagination
