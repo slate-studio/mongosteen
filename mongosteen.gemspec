@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
   s.authors     = ['Alexander Kravets']
   s.email       = 'alex@slatestudio.com'
   s.license     = 'MIT'
-  s.homepage    = 'http://slatestudio.com'
+  s.homepage    = 'https://github.com/slate-studio/mongosteen'
   s.summary     = 'An easy way to add restful actions'
   s.description = <<-DESC
 Mongosteen is a library that helps to easily add restful actions to
@@ -22,12 +22,12 @@ json config.
   s.files         = `git ls-files`.split("\n")
   s.require_paths = ['lib']
 
-  s.add_dependency('mongoid')             # orm
-  s.add_dependency('inherited_resources') # base actions
-  s.add_dependency('kaminari')            # pagination
-  s.add_dependency('mongoid_search')      # search
-  s.add_dependency('has_scope')           # scopes
-  s.add_dependency('mongoid-history')     # history
+  s.add_dependency('mongoid',             '~> 4.0')  # orm
+  s.add_dependency('inherited_resources', '~> 1.6')  # base actions
+  s.add_dependency('kaminari',            '~> 0.16') # pagination
+  s.add_dependency('mongoid_search',      '~> 0.3')  # search
+  s.add_dependency('has_scope',           '~> 0.6')  # scopes
+  s.add_dependency('mongoid-history',     '~> 0.4')  # history
 end
 
 
