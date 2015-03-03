@@ -21,9 +21,9 @@ module Mongosteen
 end
 
 class ActionController::Base
-  # You can call reactor_resources in your controller to have
+  # You can call mongosteen in your controller to have
   # all the required modules and funcionality included.
-  def self.reactor_resources
+  def self.mongosteen
     self.class_eval do
       inherit_resources
 
