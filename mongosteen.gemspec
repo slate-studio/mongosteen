@@ -12,7 +12,7 @@ Gem::Specification.new do |s|
   s.homepage    = 'https://github.com/slate-studio/mongosteen'
   s.summary     = 'An easy way to add restful actions'
   s.description = <<-DESC
-Mongosteen is a library that helps to easily add restful actions to
+Mongosteen is a library that helps to easily add RESTful actions to
 mongoid models with support of search, pagination, scopes, history,
 json config.
   DESC
@@ -28,6 +28,11 @@ json config.
   s.add_dependency('mongoid_search',      '>= 0.3')   # search
   s.add_dependency('has_scope',           '>  0.5')   # scopes
   s.add_dependency('mongoid-history',     '>= 0.4.5') # history
+
+  # tests
+  s.add_development_dependency('rake',        ['>= 0.8.7'])
+  s.add_development_dependency('rspec',       ['>= 2.0'])
+  s.add_development_dependency('rspec-aspic', ['>= 0.0.2'])
 end
 
 

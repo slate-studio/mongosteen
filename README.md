@@ -2,11 +2,13 @@
 
 # Mongosteen
 
+
 ## An easy way to add restful actions
 
 Mongosteen is a library that helps to easily add restful actions to mongoid models and adds support of search, pagination, scopes, json config and history.
 
 Mongosteen is based on [inherited_resources](https://github.com/josevalim/inherited_resources) gem, get yourself familiar on how it works and setup using it's documentation.
+
 
 ## Installation
 
@@ -30,9 +32,10 @@ Mongosteen is based on [inherited_resources](https://github.com/josevalim/inheri
   resources :posts
   ```
 
+
 ## Mongosteen API
 
-#### Index
+### Index
 
 Index supports **search**, **page**, **perPage** and **scope** parameters:
 
@@ -45,7 +48,8 @@ Check out external gems documentation to see what options they provide:
 - **[kaminari](https://github.com/amatsuda/kaminari)** — generic Rails pagination solution;
 - **[has_scope](https://github.com/plataformatec/has_scope)** — easy way to access mongoid model scopes via controller;
 
-#### Versions
+
+### Versions
 
 Get specific resource **version**:
 
@@ -57,7 +61,8 @@ No how to add history support for mongoid model, check out:
 
 - **[mongoid-history](https://github.com/aq1018/mongoid-history)** — track changes to mongoid document;
 
-#### JSON config for model
+
+### JSON config for model
 
 Some times there is a need to configure json output for the model, for example to add model method to output or to exclude some internal fields. Mongosteen provides an easy and isolated way to do that in models controller using ```json_config``` method:
 
@@ -70,11 +75,10 @@ Some times there is a need to configure json output for the model, for example t
 
 ```json_config``` accepts configuration hash and passes it to [as_json](http://apidock.com/rails/ActiveResource/Base/as_json) method when render output.
 
-#### Sorted Relations
 
-In Mongoid, the HABTM relations return docs in the wrong order. This workaround gives your document the ability to retrieve it's relations in the same order it was placed in. This is refactored version of an original [mongoid-sorted-relations](https://github.com/demarque/mongoid-sorted-relations) gem.
+### Sorted Relations
 
-For more details about this issue, see [#1548](https://github.com/mongoid/mongoid/issues/1548).
+In Mongoid, the HM & HABTM relations return docs in the wrong order. This workaround gives your document the ability to retrieve it's relations in the same order it was placed in.
 
 Usage example:
 
@@ -83,21 +87,25 @@ Usage example:
     include Mongoid::Document
     include Mongoid::SortedRelations
 
+    field :title
+
     has_and_belongs_to_many :authors
+    sorted_relations_for :authors
   end
 
-  post = Book.new title: 'Restful actions with Mongosteen'
-  post.authors << Author.create name: "Alexander Kravets"
-  post.authors << Author.create name: "Roman Brazhnyk"
-  post.authors << Author.create name: "Maxim Melnyk"
+  post = Post.new title: 'RESTful actions with Mongosteen'
+  post.sorted_author_ids = [ Author.create(name: "Alexander Kravets").id,
+                             Author.create(name: "Roman Brazhnyk").id,
+                             Author.create(ame: "Maxim Melnyk").id ]
 
   post.sorted_authors.map(&:name)
   #=> ['Alexander Kravets', 'Roman Brazhnyk', 'Maxim Melnyk']
   ```
 
-Check out orignal gem [documentation](https://github.com/demarque/mongoid-sorted-relations) for more usage examples.
+This is mostly intendent to aprovide an option to reorder related documents in the CMS.
 
-#### Permitted Parameters
+
+### Permitted Parameters
 
 For easiness of prototyping, Mongosteen has a workaround that allows all input parameters for ```create``` and ```update``` methods. This default behaviour can be overriden by using ```permitted_params``` method inside of models controller, e.g.:
 
@@ -113,7 +121,8 @@ For easiness of prototyping, Mongosteen has a workaround that allows all input p
   end
   ```
 
-#### Serializable Model Id
+
+### Serializable Model Id
 
 By default mongoid model serializes document id into hash, to override that add ```Mongoid::SerializedId``` to model class:
 
@@ -125,16 +134,26 @@ By default mongoid model serializes document id into hash, to override that add 
   end
   ```
 
-## The Mongosteen family
 
-- [Character](https://github.com/slate-studio/chr): A simple and lightweight javascript library for building data management web apps
+## Mongosteen family
 
-## Credits
+- [Character](https://github.com/slate-studio/chr): Powerful responsive javascript CMS for apps
+- [Mongosteen](https://github.com/slate-studio/mongosteen): An easy way to add RESTful actions for Mongoid models
+- [Inverter](https://github.com/slate-studio/inverter): An easy way to connect Rails templates content to Character CMS
+- [Loft](https://github.com/slate-studio/loft): Media assets manager for Character CMS
 
-[![Slate Studio](https://slate-git-images.s3-us-west-1.amazonaws.com/slate.png)](http://slatestudio.com)
-
-Mongosteen is maintained and funded by [Slate Studio, LLC](http://slatestudio.com). Tweet your questions or suggestions to [@slatestudio](https://twitter.com/slatestudio) and while you’re at it follow us too.
 
 ## License
 
-Copyright © 2015 [Slate Studio, LLC](http://slatestudio.com). Mongosteen is free software, and may be redistributed under the terms specified in the [license](LICENSE.md).
+Copyright © 2015 [Slate Studio, LLC](http://slatestudio.com). Mongoosteen is free software, and may be redistributed under the terms specified in the [license](LICENSE.md).
+
+
+## About Slate Studio
+
+[![Slate Studio](https://slate-git-images.s3-us-west-1.amazonaws.com/slate.png)](http://slatestudio.com)
+
+Mongoosteen is maintained and funded by [Slate Studio, LLC](http://slatestudio.com). Tweet your questions or suggestions to [@slatestudio](https://twitter.com/slatestudio) and while you’re at it follow us too.
+
+
+
+
