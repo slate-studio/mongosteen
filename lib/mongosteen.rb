@@ -16,6 +16,7 @@ module Mongosteen
   end
 end
 
+
 class ActionController::Base
   # You can call mongosteen in your controller to have
   # all the required modules and funcionality included.
@@ -25,16 +26,25 @@ class ActionController::Base
 
       respond_to :json
       class_attribute :as_json_config
+      class_attribute :json_default_methods
 
       extend  Mongosteen::ClassMethods
       include Mongosteen::BaseHelpers
       include Mongosteen::Actions
       include Mongosteen::PermittedParams
 
-      # configure permitted_params to accept all attributes
       instance_name = self.resources_configuration[:self][:instance_name]
+
+      # configure permitted_params to accept all attributes
       define_method("#{ instance_name }_params") { params_all_permitted }
       private "#{ instance_name }_params"
+
+      # support for character default list item attributes
+      chr_default_methods = %w( _list_item_title _list_item_subtitle _list_item_thumbnail )
+      self.json_default_methods = chr_default_methods.select { |m| self.resource_class.method_defined? m }
+
+      json_config()
+
     end
   end
 end
