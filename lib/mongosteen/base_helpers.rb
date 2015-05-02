@@ -1,13 +1,8 @@
-# List of dependencies:
-#  - inherited_resources
-#  - has_scope
-#  - mongoid_search
-#  - kaminari
-#  - mongoid-history
-
 module Mongosteen
   module BaseHelpers
+
     protected
+
       # add support for scopes, search and pagination
       def collection
         get_collection_ivar || begin
@@ -33,6 +28,7 @@ module Mongosteen
         end
       end
 
+
       # add support for history
       def get_resource_version
         resource = get_resource_ivar
@@ -47,10 +43,13 @@ module Mongosteen
         return resource
       end
 
+
       # support for json resource configuration
       def as_json_config
         self.class.as_json_config
       end
+
+
   end
 end
 

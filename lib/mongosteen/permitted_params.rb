@@ -1,5 +1,7 @@
 module Mongosteen
   module PermittedParams
+
+
     # Permits all parameters that are sent, unless `project_params`
     # (or `smth_else_params`) defined, which is a default Rails
     # controller method for strong parameters definition.
@@ -12,6 +14,7 @@ module Mongosteen
 
       return params.require(resource_request_name).permit(permit_fields)
     end
+
 
     # allow all sent in params attributes to be written
     def attr_name_or_map(attr_name, val)
@@ -50,10 +53,12 @@ module Mongosteen
         return map
 
       else
-
         return attr_name
+
       end
     end
+
+
   end
 end
 

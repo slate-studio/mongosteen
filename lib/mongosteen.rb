@@ -1,6 +1,12 @@
+# @TODO: take a look at http://jsonapi.org/implementations/
+
+
 require 'inherited_resources'
-require 'has_scope'
+require 'mongoid_search'
+require 'mongoid_history'
 require 'kaminari'
+require 'has_scope'
+
 
 module Mongosteen
   autoload :Actions,         'mongosteen/actions'
@@ -9,22 +15,22 @@ module Mongosteen
   autoload :PermittedParams, 'mongosteen/permitted_params'
 
   class Engine < ::Rails::Engine
-    require 'mongosteen/engine'
-    require 'mongoid/fake_criteria'
-    require 'mongoid/sorted_relations'
-    require 'mongoid/serializable_id'
+    # auto wire
   end
 end
 
 
 class ActionController::Base
-  # You can call mongosteen in your controller to have
-  # all the required modules and funcionality included.
+
+  # Call mongosteen in your controller to have all the
+  # required modules and funcionality included.
   def self.mongosteen
     self.class_eval do
+
       inherit_resources
 
       respond_to :json
+
       class_attribute :as_json_config
       class_attribute :json_default_methods
 
@@ -47,8 +53,7 @@ class ActionController::Base
 
     end
   end
-end
 
-# TODO: take a look at http://jsonapi.org/implementations/
+end
 
 

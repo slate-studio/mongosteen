@@ -22,17 +22,16 @@ json config.
   s.files         = `git ls-files`.split("\n")
   s.require_paths = ['lib']
 
+  s.add_dependency('inherited_resources', '>= 1.6')   # resources
   s.add_dependency('mongoid',             '>= 4.0')   # orm
-  s.add_dependency('inherited_resources', '>= 1.6')   # base actions
-  s.add_dependency('kaminari',            '>= 0.16')  # pagination
   s.add_dependency('mongoid_search',      '>= 0.3')   # search
-  s.add_dependency('has_scope',           '>  0.5')   # scopes
   s.add_dependency('mongoid-history',     '>= 0.4.5') # history
+  s.add_dependency('kaminari',            '>= 0.16')  # pagination
+  s.add_dependency('has_scope',           '>  0.5')   # scopes
 
-  # tests
-  s.add_development_dependency('rake',        ['>= 0.8.7'])
-  s.add_development_dependency('rspec',       ['>= 2.0'])
-  s.add_development_dependency('rspec-aspic', ['>= 0.0.2'])
+  s.add_development_dependency('rake',        [ '>= 0.8.7' ])
+  s.add_development_dependency('rspec',       [ '>= 2.0'   ])
+  s.add_development_dependency('rspec-aspic', [ '>= 0.0.2' ])
 end
 
 

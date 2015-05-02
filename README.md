@@ -3,11 +3,11 @@
 # Mongosteen
 
 
-## An easy way to add restful actions
+## An easy way to add RESTful actions
 
-Mongosteen is a library that helps to easily add restful actions to mongoid models and adds support of search, pagination, scopes, json config and history.
+Mongosteen is a library that helps to easily add RESTful actions to mongoid models, providing support for search, pagination, scopes, json configuration and history.
 
-Mongosteen is based on [inherited_resources](https://github.com/josevalim/inherited_resources) gem, get yourself familiar on how it works and setup using it's documentation.
+Mongosteen is based on [inherited_resources](https://github.com/josevalim/inherited_resources) gem, get yourself familiar with how it works and what you can do with this great tool.
 
 
 ## Installation
@@ -62,9 +62,9 @@ No how to add history support for mongoid model, check out:
 - **[mongoid-history](https://github.com/aq1018/mongoid-history)** — track changes to mongoid document;
 
 
-### JSON config for model
+### JSON configuration for models
 
-Some times there is a need to configure json output for the model, for example to add model method to output or to exclude some internal fields. Mongosteen provides an easy and isolated way to do that in models controller using ```json_config``` method:
+Sometimes there is a need to configure json output for the model, for example to add model method to output or exclude some internal fields. Mongosteen provides an easy and isolated way to do that in model controller using ```json_config``` method:
 
   ```ruby
   class PostsController < ApplicationController
@@ -73,64 +73,22 @@ Some times there is a need to configure json output for the model, for example t
   end
   ```
 
-```json_config``` accepts configuration hash and passes it to [as_json](http://apidock.com/rails/ActiveResource/Base/as_json) method when render output.
-
-
-### Sorted Relations
-
-In Mongoid, the HM & HABTM relations return docs in the wrong order. This workaround gives your document the ability to retrieve it's relations in the same order it was placed in.
-
-Usage example:
-
-  ```ruby
-  class Post
-    include Mongoid::Document
-    include Mongoid::SortedRelations
-
-    field :title
-
-    has_and_belongs_to_many :authors
-    sorted_relations_for :authors
-  end
-
-  post = Post.new title: 'RESTful actions with Mongosteen'
-  post.sorted_author_ids = [ Author.create(name: "Alexander Kravets").id,
-                             Author.create(name: "Roman Brazhnyk").id,
-                             Author.create(ame: "Maxim Melnyk").id ]
-
-  post.sorted_authors.map(&:name)
-  #=> ['Alexander Kravets', 'Roman Brazhnyk', 'Maxim Melnyk']
-  ```
-
-This is mostly intendent to aprovide an option to reorder related documents in the CMS.
+```json_config``` accepts configuration hash and passes it to [as_json](http://apidock.com/rails/ActiveResource/Base/as_json) method while rendering document json.
 
 
 ### Permitted Parameters
 
-For easiness of prototyping, Mongosteen has a workaround that allows all input parameters for ```create``` and ```update``` methods. This default behaviour can be overriden by using ```permitted_params``` method inside of models controller, e.g.:
+For rapid prototyping, Mongosteen allows all input parameters for ```create``` and ```update``` methods. This default behaviour can be overriden by using ```permitted_params``` method in controller, e.g:
 
   ```ruby
   class Admin::PostsController < Admin::BaseController
     mongosteen
 
-    protected
+    private
 
-    def permitted_params
-      params.permit(:post => [:title, :body])
-    end
-  end
-  ```
-
-
-### Serializable Model Id
-
-By default mongoid model serializes document id into hash, to override that add ```Mongoid::SerializedId``` to model class:
-
-  ```ruby
-  class Post
-    include Mongoid::Document
-    include Mongoid::SortedRelations
-    include Mongoid::SerializedId
+      def post_params
+        params.require(:post).permit(:title, :body)
+      end
   end
   ```
 
