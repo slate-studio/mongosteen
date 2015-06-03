@@ -32,6 +32,13 @@ json config.
   s.add_development_dependency('rake',        [ '>= 0.8.7' ])
   s.add_development_dependency('rspec',       [ '>= 2.0'   ])
   s.add_development_dependency('rspec-aspic', [ '>= 0.0.2' ])
+
+  # automated tests
+  s.add_development_dependency 'rails', '~> 4.1.2'
+  s.add_development_dependency 'database_cleaner'
+  s.add_development_dependency 'factory_girl_rails'
+  s.add_development_dependency 'minitest-reporters'
+  s.add_development_dependency 'minitest-focus'
 end
 
 
