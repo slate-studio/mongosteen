@@ -66,7 +66,7 @@ class ApiTest < Capybara::Rails::TestCase
     assert_equals('Mongosteen', test_item_array[0]['title'])
   end
 
-  test 'search' do
+  test 'scope' do
     TestItem.create!(title: "Test title", description: "Test description")
     TestItem.create!(title: "Test title 2", description: "Test description 2")
 

@@ -3,7 +3,7 @@
 
 require 'inherited_resources'
 require 'mongoid_search'
-require 'mongoid_history'
+require 'mongoid-history'
 require 'kaminari'
 require 'has_scope'
 
