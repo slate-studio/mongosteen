@@ -6,13 +6,7 @@ module Mongosteen
     # (or `smth_else_params`) defined, which is a default Rails
     # controller method for strong parameters definition.
     def params_all_permitted
-      permit_fields = []
-
-      params[resource_request_name].each do |key, value|
-        permit_fields << attr_name_or_map(key, value)
-      end
-
-      return params.require(resource_request_name).permit(permit_fields)
+      return params.require(resource_request_name).permit!
     end
 
 
