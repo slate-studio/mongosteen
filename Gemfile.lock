@@ -193,6 +193,7 @@ DEPENDENCIES
   coffee-rails (~> 4.1.0)
   database_cleaner
   factory_girl_rails
+  kaminari
   minitest-focus
   minitest-rails-capybara
   minitest-reporters
@@ -200,3 +201,4 @@ DEPENDENCIES
   mongoid-history
   mongosteen!
   rails (= 4.2.0)
+  rake (>= 0.8.7)
