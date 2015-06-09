@@ -14,7 +14,3 @@ class TestItem
     'Test method'
   end
 end
-
-
-
-

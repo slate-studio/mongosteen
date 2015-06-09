@@ -73,8 +73,23 @@ class ApiTest < Capybara::Rails::TestCase
     visit '/test_items.json?test_scope=true'
 
     test_item_array = JSON.parse(page.body)
-    puts test_item_array
     assert_equal(1, test_item_array.length)
     assert_equal('Test title', test_item_array[0]['title'])
+  end
+
+  test 'test method' do
+    TestItem.create!(title: "Test title", description: "Test description")
+
+    visit '/test_items.json'
+
+    test_item_array = JSON.parse(page.body)
+    assert_equal('Test method', test_item_array[0]['test_method'])
+  end
+
+  test 'test permit params' do
+    page.driver.post('/test_permit_items', { test_permit_item: { title: 'Test title', description: 'Test description'} } )
+
+    assert_equal('Test title', TestPermitItem.first.title)
+    assert_equal(nil, TestPermitItem.first.description)
   end
 end
