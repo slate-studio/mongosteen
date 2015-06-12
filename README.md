@@ -1,7 +1,11 @@
 ![Mongosteen](https://slate-git-images.s3-us-west-1.amazonaws.com/mongosteen.png)
 
 # Mongosteen
-
+======
+[![GitHub version](https://badge.fury.io/gh/slate-studio%2Fmongosteen.svg)](http://badge.fury.io/gh/slate-studio%2Fmongosteen)
+[![Build Status](https://travis-ci.org/slate-studio/mongosteen.svg)](https://travis-ci.org/slate-studio/mongosteen.svg)
+[![Code Climate](https://codeclimate.com/github/slate-studio/mongosteen/badges/gpa.svg)](https://codeclimate.com/github/slate-studio/mongosteen)
+[![Coverage Status](https://coveralls.io/repos/slate-studio/mongosteen/badge.svg)](https://coveralls.io/r/slate-studio/mongosteen)
 
 ## An easy way to add RESTful actions
 
