@@ -46,7 +46,7 @@ class ActionController::Base
       private "#{ instance_name }_params"
 
       # support for character default list item attributes
-      chr_default_methods = %w( _list_item_title _list_item_subtitle _list_item_thumbnail )
+      chr_default_methods = %w( _list_item_title _list_item_subtitle _list_item_thumbnail _document_versions )
       self.json_default_methods = chr_default_methods.select { |m| self.resource_class.method_defined? m }
 
       json_config()

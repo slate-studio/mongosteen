@@ -29,7 +29,8 @@ json config.
   s.add_dependency('kaminari',            '>= 0.16')  # pagination
   s.add_dependency('has_scope',           '>  0.5')   # scopes
 
-  s.add_development_dependency('rake', [ '>= 0.8.7' ])
+  s.add_development_dependency 'bundler', '~> 1.9'
+  s.add_development_dependency 'rake',    '~> 10.0'
 
   # automated tests
   s.add_development_dependency 'rails', '~> 4.1.2'
@@ -37,9 +38,6 @@ json config.
   s.add_development_dependency 'factory_girl_rails'
   s.add_development_dependency 'minitest-reporters'
   s.add_development_dependency 'minitest-focus'
-
-  s.add_development_dependency 'bundler', '~> 1.9'
-  s.add_development_dependency 'rake',    '~> 10.0'
 end
 
 
