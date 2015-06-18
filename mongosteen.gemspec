@@ -37,6 +37,9 @@ json config.
   s.add_development_dependency 'factory_girl_rails'
   s.add_development_dependency 'minitest-reporters'
   s.add_development_dependency 'minitest-focus'
+
+  s.add_development_dependency 'bundler', '~> 1.9'
+  s.add_development_dependency 'rake',    '~> 10.0'
 end
 
 
