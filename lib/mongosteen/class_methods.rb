@@ -7,5 +7,10 @@ module Mongosteen
       self.as_json_config = config_hash
     end
 
+
+    def csv_config(config_hash={})
+      self.as_csv_config = config_hash
+    end
+
   end
 end

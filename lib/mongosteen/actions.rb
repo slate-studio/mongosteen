@@ -5,6 +5,7 @@ module Mongosteen
     def index(options={}, &block)
       super do |success, failure|
         success.json { render json: get_collection_ivar.as_json(as_json_config) }
+        success.csv  { render csv:  get_collection_ivar }
       end
     end
 
@@ -37,7 +38,4 @@ module Mongosteen
 
   end
 end
-
-
-
 
