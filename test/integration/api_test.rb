@@ -9,6 +9,13 @@ class ApiTest < Capybara::Rails::TestCase
     assert_equal('Test description', TestItem.first.description)
   end
 
+  test 'delete test item' do
+    TestItem.create!(title: 'Test title', description: 'Test description')
+
+    page.driver.delete("/test_items/#{TestItem.first.id}")
+    assert_equal(0, TestItem.count)
+  end
+
   test 'update test item' do
     TestItem.create!(title: 'Test title', description: 'Test description')
 
@@ -66,11 +73,22 @@ class ApiTest < Capybara::Rails::TestCase
     assert_equal('Mongosteen', test_item_array[0]['title'])
   end
 
-  test 'scope' do
+  test 'boolean scope' do
     TestItem.create!(title: "Test title", description: "Test description")
     TestItem.create!(title: "Test title 2", description: "Test description 2")
 
     visit '/test_items.json?test_scope=true'
+
+    test_item_array = JSON.parse(page.body)
+    assert_equal(1, test_item_array.length)
+    assert_equal('Test title', test_item_array[0]['title'])
+  end
+
+  test 'scope by value' do
+    TestItem.create!(title: "Test title", description: "Test description")
+    TestItem.create!(title: "Test title 2", description: "Test description 2")
+
+    visit '/test_items.json?title_value[value]=Test+title'
 
     test_item_array = JSON.parse(page.body)
     assert_equal(1, test_item_array.length)

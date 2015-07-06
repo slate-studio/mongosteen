@@ -202,3 +202,6 @@ DEPENDENCIES
   mongosteen!
   rails (= 4.2.0)
   rake (>= 0.8.7)
+
+BUNDLED WITH
+   1.10.5

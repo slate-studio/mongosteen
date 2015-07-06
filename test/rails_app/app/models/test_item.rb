@@ -6,7 +6,8 @@ class TestItem
   field :title,       type: String
   field :description, type: String
 
-  scope :test_scope, -> { where title: "Test title" }
+  scope :test_scope,  -> { where title: "Test title" }
+  scope :title_value, -> (value) { where title: value }
 
   search_in :title, :description
 
