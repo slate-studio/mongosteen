@@ -29,17 +29,15 @@ json config.
   s.add_dependency('kaminari',            '>= 0.16')  # pagination
   s.add_dependency('has_scope',           '>  0.5')   # scopes
 
-  s.add_development_dependency 'bundler', '~> 1.9'
-  s.add_development_dependency 'rake',    '~> 10.0'
-
   # automated tests
-  s.add_development_dependency 'rails', '~> 4.1.2'
-  s.add_development_dependency 'database_cleaner'
+  s.add_development_dependency 'bundler',          '~> 1.9'
+  s.add_development_dependency 'rake',             '~> 10.0'
+  s.add_development_dependency 'rails',            '~> 4.2.3'
+  s.add_development_dependency 'coffee-rails',     '~> 4.1.0'
+  s.add_development_dependency 'database_cleaner', '1.0.1'
   s.add_development_dependency 'factory_girl_rails'
+  s.add_development_dependency 'capybara-webkit'
   s.add_development_dependency 'minitest-reporters'
   s.add_development_dependency 'minitest-focus'
+  s.add_development_dependency 'minitest-rails-capybara'
 end
-
-
-
-

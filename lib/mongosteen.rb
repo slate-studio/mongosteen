@@ -2,6 +2,7 @@
 
 
 require 'inherited_resources'
+require 'mongoid'
 require 'mongoid_search'
 require 'mongoid-history'
 require 'kaminari'
