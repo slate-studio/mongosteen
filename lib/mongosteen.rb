@@ -36,9 +36,11 @@ class ActionController::Base
       respond_to :csv, :only => :index
 
       class_attribute :as_json_config
+      class_attribute :as_json_config_actions
       class_attribute :json_default_methods
 
       class_attribute :as_csv_config
+
 
       extend  Mongosteen::ClassMethods
       include Mongosteen::BaseHelpers

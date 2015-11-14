@@ -19,22 +19,22 @@ json config.
 
   s.rubyforge_project = 'mongosteen'
 
-  s.files         = `git ls-files`.split("\n")
+  s.files = `git ls-files`.split("\n")
   s.require_paths = ['lib']
 
-  s.add_dependency('inherited_resources', '>= 1.6')   # resources
-  s.add_dependency('mongoid-history',     '>= 0.4.5') # history
-  s.add_dependency('mongoid',             '>= 4.0')   # orm
-  s.add_dependency('mongoid_search',      '>= 0.3')   # search
-  s.add_dependency('kaminari',            '>= 0.16')  # pagination
-  s.add_dependency('has_scope',           '>  0.5')   # scopes
+  s.add_dependency('inherited_resources', '>= 1.6')
+  s.add_dependency('mongoid-history', '>= 0.5.0')
+  s.add_dependency('mongoid', '>= 5.0')
+  s.add_dependency('mongoid_search', '>= 0.3')
+  s.add_dependency('kaminari', '>= 0.16')
+  s.add_dependency('has_scope', '>=  0.6')
 
   # automated tests
-  s.add_development_dependency 'bundler',          '~> 1.9'
-  s.add_development_dependency 'rake',             '~> 10.0'
-  s.add_development_dependency 'rails',            '~> 4.2.3'
-  s.add_development_dependency 'coffee-rails',     '~> 4.1.0'
-  s.add_development_dependency 'database_cleaner', '1.0.1'
+  s.add_development_dependency 'bundler'
+  s.add_development_dependency 'rake'
+  s.add_development_dependency 'rails'
+  s.add_development_dependency 'coffee-rails'
+  s.add_development_dependency 'database_cleaner'
   s.add_development_dependency 'factory_girl_rails'
   s.add_development_dependency 'capybara-webkit'
   s.add_development_dependency 'minitest-reporters'
