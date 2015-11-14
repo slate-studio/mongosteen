@@ -1,15 +1,10 @@
-# @TODO: take a look at http://jsonapi.org/implementations/
-
-
 require 'inherited_resources'
 require 'mongoid'
 require 'mongoid_search'
 require 'mongoid-history'
 require 'kaminari'
 require 'has_scope'
-
 require 'mongosteen/csv_renderer'
-
 
 module Mongosteen
   autoload :Actions,         'mongosteen/actions'
@@ -22,9 +17,7 @@ module Mongosteen
   end
 end
 
-
 class ActionController::Base
-
   # Call mongosteen in your controller to have all the
   # required modules and funcionality included.
   def self.mongosteen
@@ -40,7 +33,6 @@ class ActionController::Base
       class_attribute :json_default_methods
 
       class_attribute :as_csv_config
-
 
       extend  Mongosteen::ClassMethods
       include Mongosteen::BaseHelpers
@@ -59,10 +51,6 @@ class ActionController::Base
 
       json_config()
       csv_config()
-
     end
   end
-
 end
-
-

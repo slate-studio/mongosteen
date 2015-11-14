@@ -3,14 +3,14 @@ $:.push File.expand_path('../lib', __FILE__)
 require 'mongosteen/version'
 
 Gem::Specification.new do |s|
-  s.name        = 'mongosteen'
-  s.version     = Mongosteen::VERSION
-  s.platform    = Gem::Platform::RUBY
-  s.authors     = ['Alexander Kravets']
-  s.email       = 'alex@slatestudio.com'
-  s.license     = 'MIT'
-  s.homepage    = 'https://github.com/slate-studio/mongosteen'
-  s.summary     = 'An easy way to add restful actions'
+  s.name = 'mongosteen'
+  s.version = Mongosteen::VERSION
+  s.platform = Gem::Platform::RUBY
+  s.authors = ['Alexander Kravets']
+  s.email = 'alex@slatestudio.com'
+  s.license = 'MIT'
+  s.homepage = 'https://github.com/slate-studio/mongosteen'
+  s.summary = 'An easy way to add restful actions'
   s.description = <<-DESC
 Mongosteen is a library that helps to easily add RESTful actions to
 mongoid models with support of search, pagination, scopes, history,
