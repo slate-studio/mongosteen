@@ -69,12 +69,25 @@ Sometimes there is a need to configure json output for the model, for example to
   ```ruby
   class PostsController < ApplicationController
     mongosteen
-    json_config({ methods: [ :published_at ] })
+    json_config methods: %w(published_at)
   end
   ```
 
 ```json_config``` accepts configuration hash and passes it to [as_json](http://apidock.com/rails/ActiveResource/Base/as_json) method while rendering document json.
 
+If you need to define configuration specifically for methods, e.g. index might not need all document fields to make requests lighter, there is an `actions` special key for that:
+
+```ruby
+class PostsController < ApplicationController
+  mongosteen
+  json_config methods: %w(published_at),
+              actions: {
+                index: { methods: %w(published_at), exclude: %w(body_html) }
+              }
+end
+```
+
+There are four default actions you can use here: `index`, `show`, `create`, `update`. Also you can specify your custom methods defined in controller and connected via routes.
 
 ### Permitted Parameters
 
@@ -111,7 +124,3 @@ Copyright © 2015 [Slate Studio, LLC](http://slatestudio.com). Mongoosteen is fr
 [![Slate Studio](https://slate-git-images.s3-us-west-1.amazonaws.com/slate.png)](http://slatestudio.com)
 
 Mongoosteen is maintained and funded by [Slate Studio, LLC](http://slatestudio.com). Tweet your questions or suggestions to [@slatestudio](https://twitter.com/slatestudio) and while you’re at it follow us too.
-
-
-
-
